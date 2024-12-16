@@ -4,7 +4,7 @@ import os
 from collections import deque
 
 class SpriteObject:
-    def __init__(self, game, path= 'Algoprog/Final Project/resources/static_sprites/chandelier.png', 
+    def __init__(self, game, path= 'resources/static_sprites/knight.png', 
                  pos=(10.5, 3.5), scale=1, shift=0.27):
         self.game = game
         self.player = game.player
@@ -54,7 +54,7 @@ class SpriteObject:
 
 
 class AnimatedSprite(SpriteObject):
-    def __init__ (self, game, path='Algoprog/Final Project/resources/static_sprites/chandelier.png',
+    def __init__ (self, game, path='resources/sprite/barrel.png',
                   pos =(11.5, 3.5), scale = 0.8, shift=0.15, animation_time=120):
         super().__init__(game, path, pos, scale, shift)
         self.animation_time = animation_time

@@ -8,11 +8,24 @@ class Player:
         self.x, self.y = PLAYER_POS     #setting the initial position of player
         self.angle = PLAYER_ANGLE    
         self.shot = False   
+        self.health = PLAYER_MAX_HEALTH
+
+    def check_game_over(self):
+        if self.health < 1:
+            self.game.object_renderer.game_over()
+            pg.display.flip()
+            pg.time.delay(2000)
+            self.game.new_game()
+
+    def get_damage(self, damage):
+        self.health -= damage
+        self.game.object_renderer.player_damage()
+        self.game.sound.player_pain.play()
 
     def single_fire_event(self, event):
         if event.type == pg.MOUSEBUTTONDOWN:
             if event.button == 1 and not self.shot and not self.game.weapon.reloading:
-                self.game.sound.shotgun.play()
+                self.game.sound.pistol.play()
                 self.shot = True
                 self.game.weapon.reloading = True
     
@@ -39,11 +52,6 @@ class Player:
             dy += speed_cos
 
         self.check_wall_collision(dx, dy)
-
-        #if keys[pg.K_LEFT]:                                         #setting camera rotation 
-        #    self.angle -= PLAYER_ROT_SPEED * self.game.delta_time
-        #if keys[pg.K_RIGHT]:
-        #    self.angle += PLAYER_ROT_SPEED * self.game.delta_time
         self.angle %= math.tau                                      #tau = 2*pi
 
     def check_wall(self, x, y):                         #checking for walls in the game at a given position (x, y)

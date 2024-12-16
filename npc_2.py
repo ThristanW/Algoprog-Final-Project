@@ -1,9 +1,9 @@
 from sprite_object import *
 from random import random, randint, choice
 
-class NPC(AnimatedSprite):
-    def __init__(self, game, path='resources/npc/SS/0.png',
-                 scale=0.6, shift=0.4, animation_time=180):
+class NPC_2(AnimatedSprite):
+    def __init__(self, game, path='resources/npc/Guard/0.png',
+                 scale=1, shift=0.1, animation_time=180):
         spawn_pos = self.get_random_spawn_location(game.map.mini_map)
         super().__init__(game, path, spawn_pos, scale, shift, animation_time)
         self.attack_images = self.get_images(self.path + '/attack')
