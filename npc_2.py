@@ -40,7 +40,6 @@ class NPC_2(AnimatedSprite):
         self.check_animation_time()
         self.get_sprite()
         self.run_logic()
-        #self.draw_ray_cast()
 
     def check_wall(self, x, y):
         return (x, y) not in self.game.map.world_map                         

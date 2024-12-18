@@ -44,11 +44,8 @@ class Game:
         pg.display.set_caption(f'{self.clock.get_fps() :.1f}')  #FPS counter
 
     def draw(self):   
-        #self.screen.fill('black')
         self.object_renderer.draw()
         self.weapon.draw()
-        #self.map.draw()
-        #self.player.draw()
 
     def check_events(self):
         self.global_trigger = False

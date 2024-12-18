@@ -5,7 +5,7 @@ from settings import *
 class Player:
     def __init__(self, game):
         self.game = game
-        self.x, self.y = PLAYER_POS     #setting the initial position of player
+        self.x, self.y = PLAYER_POS 
         self.angle = PLAYER_ANGLE    
         self.shot = False   
         self.health = PLAYER_MAX_HEALTH
@@ -63,12 +63,6 @@ class Player:
             self.x += dx                                    #if there are no walls detected, self.x and self.y updates, indicating that the player has moved.    
         if self.check_wall(int(self.x), int(self.y + dy * scale)):
             self.y += dy
-
-    def draw(self): 
-        #pg.draw.line(self.game.screen, 'yellow', (self.x * 100, self.y * 100),          #drawing a line to indicate where the player is facing
-        #            (self.x * 100 + WIDTH * math.cos(self.angle),
-        #             self.y * 100 + WIDTH * math.sin(self.angle)), 2)
-        pg.draw.circle(self.game.screen, 'green', (self.x * 100, self.y * 100), 15)     #drawing the player as a circle
 
     def mouse_control(self):
         mx, my = pg.mouse.get_pos()
